@@ -1,0 +1,15 @@
+
+<div>
+    <h2>status: {{details.status}}</h2>
+    <h3>order : #{{details.ref}}</h3>
+    <h2>Items:</h2>
+    <p>{{details.items | json}}</p>
+    <h2>Purchase order:</h2>
+    <p>{{details.purchase | json}}</p>
+    <button (click)="approve(details.ref)">Approve</button>
+    <button (click)="decline(details.ref)">Decline</button>
+    <button (click)="process(details.ref)">Order processed</button>
+    <button (click)="readyShip(details.ref)">Ready for shipping</button>
+    <button (click)="dispatch(details.ref)">Dispatched</button>
+    <a href="supplierDetails/{{details.ref}}">Details</a>
+    </div>

@@ -1,24 +1,24 @@
-import { SupplierService } from '../supplier.service'; 
-import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { SupplierService } from '../supplier.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-supplier',
-  templateUrl: './supplier.component.html',
-  styleUrls: ['./supplier.component.css']
+  selector: 'app-supplier-details',
+  templateUrl: './supplier-details.component.html',
+  styleUrls: ['./supplier-details.component.css']
 })
-export class SupplierComponent {
-
-  purchases:any = []
+export class SupplierDetailsComponent {
+  details:any = []
   id:any;
 
-  constructor(private purchaseApi:SupplierService, public rout:Router){}
+  constructor(private purchaseApi:SupplierService, public route:ActivatedRoute){}
   
   
   ngOnInit():void{
-  this.purchaseApi.getAll().subscribe(
+    this.id = this.route.snapshot.paramMap.get('id')
+    this.purchaseApi.getAll().subscribe(
     (res:any) => {
-      this.purchases = JSON.parse(res)
+      this.details = JSON.parse(res)
     }
   )
 }

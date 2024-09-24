@@ -1,0 +1,10 @@
+<div>
+    <h2>status: {{details.status}}</h2>
+    <h3>order : #{{details.ref}}</h3>
+    <h2>Items:</h2>
+    <p>{{details.items | json}}</p>
+    <h2>Packages:</h2>
+    <p>{{details.pacakages | json}}</p>
+    <button (click)="approve(details.ref)">Approve</button>
+    <button (click)="decline(details.ref)">Decline</button>
+    </div>

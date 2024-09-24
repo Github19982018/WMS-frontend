@@ -1,8 +1,14 @@
 
 <div *ngFor="let i of purchases; ">
-    <div>{{i.ref}} {{i.status}}
-        <button (click)="approve(i.ref)">Approve</button>
-        <button (click)="decline(i.ref)">Decline</button>
-        <a href="details/{{i.ref}}">Details</a>
+    <div >{{i.ref}} {{i.status}}
+        <div [ngSwitch]="i.status">
+            <button ngSwitchCase="pending" (click)="approve(i.ref)">Approve</button>
+            <button (click)="decline(i.ref)">Decline</button>
+            <button ngSwitchCase="approved" (click)="process(i.ref)">Order processed</button>
+            <button ngSwitchCase="order processed" (click)="readyShip(i.ref)">Ready for shipping</button>
+            <button ngSwitchCase="ready for shipping" (click)="dispatch(i.ref)">Dispatched</button>
+            <button ngSwitchCase="dispatched" disabled>Dispatched</button>
+            <a href="supplier/details/{{i.ref}}">Details</a>
+        </div>
     </div>
     </div>

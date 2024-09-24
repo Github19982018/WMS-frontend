@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PurchaseService } from '../purchase.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,11 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 export class PurchaseComponent {
   purchases:any = []
   id:any;
-  constructor(private purchaseApi:PurchaseService, public route:ActivatedRoute){}
+  constructor(private purchaseApi:PurchaseService, public route:Router){}
   
   
   ngOnInit():void{
-    this.id = this.route.snapshot.paramMap.get('id')
     this.purchaseApi.getAll().subscribe(
     (res:any) => {
       this.purchases = JSON.parse(res)

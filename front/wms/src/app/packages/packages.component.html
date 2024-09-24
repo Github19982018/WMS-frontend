@@ -1,1 +1,8 @@
-<p>packages works!</p>
+
+<div *ngFor="let i of packages; ">
+    <div>{{i.ref}} {{i.status}}
+        <button (click)="approve(i.ref)">Approve</button>
+        <button (click)="decline(i.ref)">Decline</button>
+        <a href="packages/details/{{i.ref}}">Details</a>
+    </div>
+    </div>
