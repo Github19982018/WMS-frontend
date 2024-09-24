@@ -13,14 +13,17 @@ export class SupplierDetailsComponent {
 
   constructor(private purchaseApi:SupplierService, public route:ActivatedRoute){}
   
+  getAll(){
+    this.purchaseApi.getAll().subscribe(
+      (res:any) => {
+        this.details = JSON.parse(res)
+      }
+    )
+  }
   
   ngOnInit():void{
     this.id = this.route.snapshot.paramMap.get('id')
-    this.purchaseApi.getAll().subscribe(
-    (res:any) => {
-      this.details = JSON.parse(res)
-    }
-  )
+    this.getAll()
 }
 
   decline(id:number){
@@ -30,28 +33,28 @@ export class SupplierDetailsComponent {
   approve(id:number){
       this.purchaseApi.approve(id).subscribe(
         (res:any) => {
-          return 'success'
+         this.getAll()
         }
       )
   }
   process(id:number){
       this.purchaseApi.process(id).subscribe(
         (res:any) => {
-          return 'success'
+          this.getAll()
         }
       )
   }
   readyShip(id:number){
       this.purchaseApi.readyShip(id).subscribe(
         (res:any) => {
-          return 'success'
+          this.getAll()
         }
       )
   }
   dispatch(id:number){
       this.purchaseApi.dispatch(id).subscribe(
         (res:any) => {
-          return 'success'
+          this.getAll()
         }
       )
   }
