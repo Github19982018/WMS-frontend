@@ -1,0 +1,8 @@
+
+<div *ngFor="let i of purchases; ">
+    <div>{{i.ref}} {{i.status}}
+        <button (click)="approve(i.ref)">Approve</button>
+        <button (click)="decline(i.ref)">Decline</button>
+        <a href="details/{{i.ref}}">Details</a>
+    </div>
+    </div>

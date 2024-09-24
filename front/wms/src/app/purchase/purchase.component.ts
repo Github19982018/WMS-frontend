@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PurchaseService } from '../purchase.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -10,28 +10,35 @@ import { Router } from '@angular/router';
 })
 export class PurchaseComponent {
   purchases:any = []
-
-  constructor(private purchaseApi:PurchaseService, public rout:Router){}
+  id:any;
+  constructor(private purchaseApi:PurchaseService, public route:ActivatedRoute){}
   
   
   ngOnInit():void{
-  this.purchaseApi.getAll().subscribe(
+    this.id = this.route.snapshot.paramMap.get('id')
+    this.purchaseApi.getAll().subscribe(
     (res:any) => {
       this.purchases = JSON.parse(res)
     }
   )
 }
 
-  decline(id:number){
-      
-  }
 
   approve(id:number){
-      this.purchaseApi.approve(id).subscribe(
-        (res:any) => {
-          return 'success'
-        }
-      )
+    console.log('approve')
+    this.purchaseApi.approve(Number(this.id)).subscribe(
+      (res:any) => {
+        return 'success'
+      }
+    )
+  }
+  
+  decline(id:number){
+    this.purchaseApi.decline(Number(this.id)).subscribe(
+      (res:any) => {
+        return 'success'
+      }
+    )
   }
 
 }

@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { DetailsComponent } from './details/details.component';
 import { PackagesComponent } from './packages/packages.component';
+import { SupplierComponent } from './supplier/supplier.component';
+import { PackageDetailsComponent } from './package-details/package-details.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { PackagesComponent } from './packages/packages.component';
     PurchaseComponent,
     DetailsComponent,
     PackagesComponent,
+    SupplierComponent,
+    PackageDetailsComponent,
   ],
   imports: [
     BrowserModule,
