@@ -18,7 +18,6 @@ export class PurchaseComponent {
   this.purchaseApi.getAll().subscribe(
     (res:any) => {
       this.purchases = JSON.parse(res)
-      console.log(res)
     }
   )
 }

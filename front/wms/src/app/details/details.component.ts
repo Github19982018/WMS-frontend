@@ -25,6 +25,7 @@ export class DetailsComponent {
 }
 
 approve(id:number){
+  console.log('approve')
   this.purchaseApi.approve(Number(this.id)).subscribe(
     (res:any) => {
       return 'success'
