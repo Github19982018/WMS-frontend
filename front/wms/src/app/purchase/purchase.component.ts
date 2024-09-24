@@ -10,11 +10,15 @@ import { Router } from '@angular/router';
 })
 export class PurchaseComponent {
   purchases:any = []
+
   constructor(private purchaseApi:PurchaseService, public rout:Router){}
+  
+  
   ngOnInit():void{
   this.purchaseApi.getAll().subscribe(
     (res:any) => {
-      this.purchases = res['data']
+      this.purchases = JSON.parse(res)
+      console.log(res)
     }
   )
 }

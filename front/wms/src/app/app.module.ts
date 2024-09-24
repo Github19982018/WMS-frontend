@@ -13,7 +13,7 @@ import { DetailsComponent } from './details/details.component';
   declarations: [
     AppComponent,
     PurchaseComponent,
-    DetailsComponent
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

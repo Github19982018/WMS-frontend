@@ -9,14 +9,17 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent {
-  details:any = {}
+  details:any = []
   id:any;
+
   constructor(private purchaseApi:PurchaseService, private route:ActivatedRoute){}
+  
   ngOnInit():void{
     this.id = this.route.snapshot.paramMap.get('id')
     this.purchaseApi.get(Number(this.id)).subscribe(
       (res:any) => {
-        this.details = res['data']
+        [this.details] = JSON.parse(res)
+        console.log(this.id, this.details)
     }
   )
 }
