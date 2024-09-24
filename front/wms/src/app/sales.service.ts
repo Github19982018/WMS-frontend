@@ -22,8 +22,31 @@ export class SalesService {
     return this.http.post(`${baseurl}/sales/packages/front/approve`,{ref:id})
   }
 
-  declinePackge(id:number){
+  declinePackage(id:number){
     return this.http.post(`${baseurl}/sales/packages/front/decline`,{ref:id})
+  }
+  public getships(){
+    return this.http.get<any>(baseurl+'/sales/ships/')
+  }
+
+  getship(id:number){
+    return this.http.get(`${baseurl}/sales/ships/${id}`)
+  }
+
+  carrier(id:number){
+    return this.http.post(`${baseurl}/sales/ships/front/carrier`,{ref:id,status:3,status_val:'Picked up by the carrier'})
+  }
+
+  customer(id:number){
+    return this.http.post(`${baseurl}/sales/ships/front/customer`,{ref:id,status:4,status_val:'Recieved by the customer'})
+  }
+
+  pay(id:number){
+    return this.http.post(`${baseurl}/sales/ships/front/customer/pay`,{ref:id,status:5,status_val:'Payed by the customer'})
+  }
+
+  declineShip(id:number){
+    return this.http.post(`${baseurl}/sales/ships/front/decline`,{ref:id})
   }
 
 }

@@ -1,0 +1,12 @@
+<div *ngFor="let i of ships; ">
+    <div >{{i.ref}} {{i.status}}
+        <div [ngSwitch]="i.status_id">
+            <button ngSwitchCase="1" (click)="carrier(i.ref)">Picked up by the carrier</button>
+            <button (click)="decline(i.ref)">Decline</button>
+            <button ngSwitchCase="2" (click)="customer(i.ref)">Received by the customer</button>
+            <button ngSwitchCase="3" (click)="pay(i.ref)">Payed by the customer</button>
+            <button ngSwitchCase="4" disabled>Payed</button>
+            <a href="ships/details/{{i.ref}}">Details</a>
+        </div>
+    </div>
+</div>
