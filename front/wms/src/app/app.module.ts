@@ -7,11 +7,13 @@ import { PurchaseService } from './purchase.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PurchaseComponent
+    PurchaseComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
