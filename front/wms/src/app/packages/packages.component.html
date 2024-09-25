@@ -1,8 +1,17 @@
 
 <div *ngFor="let i of packages; ">
     <div>{{i.ref}} {{i.status}}
+        <div *ngIf="showmore == i.ref;">
+            <h2>status: {{i.status}}</h2>
+            <h3>order : #{{i.ref}}</h3>
+            <h2>Items:</h2>
+            <p>{{i.items | pretty}}</p>
+            <h2>Purchase order:</h2>
+            <p>{{i.purchase | pretty}}</p>
+        </div>
         <button (click)="approve(i.ref)">Approve</button>
         <button (click)="decline(i.ref)">Decline</button>
-        <a href="packages/details/{{i.ref}}">Details</a>
+        <button *ngIf="showmore!=i.ref" (click)="showmore = i.ref;">see details...</button>
+        <button *ngIf="showmore==i.ref" (click)="showmore = 0;">see less details...</button>
     </div>
     </div>

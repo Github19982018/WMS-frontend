@@ -22,23 +22,23 @@ export class SupplierService {
   }
 
   approve(id:number){
-    return this.http.post(`${baseurl}/supplier/purchases/front/approve/`,{ref:id,status:3,status_val:'approved'})
+    return this.http.post(`${baseurl}/supplier/front/approve/`,{ref:id,status:3,status_val:'approved'})
   }
 
   process(id:number){
-    return this.http.post(`${baseurl}/supplier/purchases/front/approve/`,{ref:id,status:4,status_val:'order processed'})
+    return this.http.post(`${baseurl}/supplier/front/approve/`,{ref:id,status:4,status_val:'order processed'})
   }
 
   readyShip(id:number){
-    return this.http.post(`${baseurl}/supplier/purchases/front/approve/`,{ref:id,status:5,status_val:'ready for shipping'})
+    return this.http.post(`${baseurl}/supplier/front/approve/`,{ref:id,status:5,status_val:'ready for shipping'})
   }
 
   dispatch(id:number){
-    return this.http.post(`${baseurl}/supplier/purchases/front/approve/`,{ref:id,status:6,status_val:'dispatched'})
+    return this.http.post(`${baseurl}/supplier/front/approve/`,{ref:id,status:6,status_val:'dispatched'})
   }
 
   decline(id:number){
-    return this.http.post(`${baseurl}/supplier/purchases/front/decline/`,{ref:id})
+    return this.http.post(`${baseurl}/supplier/front/decline/`,{ref:id})
   }
 
 }

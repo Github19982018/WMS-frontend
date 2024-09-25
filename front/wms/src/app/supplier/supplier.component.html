@@ -2,13 +2,23 @@
 <div *ngFor="let i of purchases; ">
     <div >{{i.ref}} {{i.status}}
         <div [ngSwitch]="i.status">
-            <button ngSwitchCase="pending" (click)="approve(i.ref)">Approve</button>
+            <div *ngIf="showmore == i.ref;">
+                <h2>status: {{i.status}}</h2>
+                <h3>order : #{{i.ref}}</h3>
+                <h2>Items:</h2>
+                <p>{{i.items | pretty}}</p>
+                <h2>Purchase order:</h2>
+                <p>{{i.purchase | pretty}}</p>
+            </div>
+            <button *ngSwitchCase="'pending'" (click)="approve(i.ref)">Approve</button>
             <button (click)="decline(i.ref)">Decline</button>
-            <button ngSwitchCase="approved" (click)="process(i.ref)">Order processed</button>
-            <button ngSwitchCase="order processed" (click)="readyShip(i.ref)">Ready for shipping</button>
-            <button ngSwitchCase="ready for shipping" (click)="dispatch(i.ref)">Dispatched</button>
-            <button ngSwitchCase="dispatched" disabled>Dispatched</button>
-            <a href="supplier/details/{{i.ref}}">Details</a>
+            <button *ngSwitchCase="'approved'" (click)="process(i.ref)">Order processed</button>
+            <button *ngSwitchCase="'order processed'" (click)="readyShip(i.ref)">Ready for shipping</button>
+            <button *ngSwitchCase="'ready for shipping'" (click)="dispatch(i.ref)">Dispatched</button>
+            <button *ngSwitchCase="'dispatched'" disabled>Dispatched</button>
+            <button *ngIf="showmore!=i.ref" (click)="showmore = i.ref;">see details...</button>
+            <button *ngIf="showmore==i.ref" (click)="showmore = 0;">see less details...</button>
         </div>
     </div>
 </div>
+

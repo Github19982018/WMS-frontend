@@ -11,47 +11,54 @@ export class SupplierComponent {
 
   purchases:any = []
   id:any;
+  showmore = 0;
 
   constructor(private purchaseApi:SupplierService, public rout:Router){}
   
-  
-  ngOnInit():void{
-  this.purchaseApi.getAll().subscribe(
+  getAll(){
+    this.purchaseApi.getAll().subscribe(
     (res:any) => {
       this.purchases = JSON.parse(res)
     }
   )
+  }
+  
+  ngOnInit():void{
+  this.getAll()
 }
 
   decline(id:number){
       
   }
 
-  approve(id:number){
-      this.purchaseApi.approve(id).subscribe(
+  approve(id:any){
+      this.purchaseApi.approve(Number(id)).subscribe(
         (res:any) => {
-          return 'success'
+          this.getAll()
         }
       )
   }
-  process(id:number){
-      this.purchaseApi.process(id).subscribe(
+  process(id:any){
+      this.purchaseApi.process(Number(id)).subscribe(
         (res:any) => {
-          return 'success'
+          this.getAll()
+
         }
       )
   }
-  readyShip(id:number){
-      this.purchaseApi.readyShip(id).subscribe(
+  readyShip(id:any){
+      this.purchaseApi.readyShip(Number(id)).subscribe(
         (res:any) => {
-          return 'success'
+          this.getAll()
+
         }
       )
   }
-  dispatch(id:number){
-      this.purchaseApi.dispatch(id).subscribe(
+  dispatch(id:any){
+      this.purchaseApi.dispatch(Number(id)).subscribe(
         (res:any) => {
-          return 'success'
+          this.getAll()
+
         }
       )
   }

@@ -1,12 +1,20 @@
 <div *ngFor="let i of ships; ">
     <div >{{i.ref}} {{i.status}}
         <div [ngSwitch]="i.status_id">
-            <button ngSwitchCase="1" (click)="carrier(i.ref)">Picked up by the carrier</button>
-            <button (click)="decline(i.ref)">Decline</button>
-            <button ngSwitchCase="2" (click)="customer(i.ref)">Received by the customer</button>
-            <button ngSwitchCase="3" (click)="pay(i.ref)">Payed by the customer</button>
-            <button ngSwitchCase="4" disabled>Payed</button>
-            <a href="ships/details/{{i.ref}}">Details</a>
+            <div *ngIf="showmore == i.ref;">
+            <h2>status: {{i.status}}</h2>
+            <h3>order : #{{i.ref}}</h3>
+            <h2>Items:</h2>
+            <p>{{i.items | pretty}}</p>
+            <h2>Purchase order:</h2>
+            <p>{{i.purchase | pretty}}</p>
+        </div>
+        <button ngSwitchCase="1" (click)="carrier(i.ref)">Picked up by the carrier</button>
+        <button (click)="decline(i.ref)">Decline</button>
+        <button ngSwitchCase="2" (click)="customer(i.ref)">Received by the customer</button>
+        <button ngSwitchCase="3" (click)="pay(i.ref)">Payed by the customer</button>
+        <button ngSwitchCase="4" disabled>Payed</button>
+        <button *ngIf="showmore!=i.ref" (click)="showmore = i.ref;">see details...</button>
+        <button *ngIf="showmore==i.ref" (click)="showmore = 0;">see less details...</button>
         </div>
     </div>
-</div>

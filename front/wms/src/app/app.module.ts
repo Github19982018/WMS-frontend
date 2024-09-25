@@ -9,25 +9,19 @@ import { SupplierService } from './supplier.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PurchaseComponent } from './purchase/purchase.component';
-import { DetailsComponent } from './details/details.component';
 import { PackagesComponent } from './packages/packages.component';
 import { SupplierComponent } from './supplier/supplier.component';
-import { PackageDetailsComponent } from './package-details/package-details.component';
-import { SupplierDetailsComponent } from './supplier-details/supplier-details.component';
 import { ShipmentComponent } from './shipment/shipment.component';
-import { ShipmentDetailsComponent } from './shipment-details/shipment-details.component';
+import { PrettyPipe } from './pretty.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     PurchaseComponent,
-    DetailsComponent,
     PackagesComponent,
     SupplierComponent,
-    PackageDetailsComponent,
-    SupplierDetailsComponent,
     ShipmentComponent,
-    ShipmentDetailsComponent,
+    PrettyPipe,
   ],
   imports: [
     BrowserModule,

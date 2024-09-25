@@ -9,6 +9,7 @@ import { SalesService } from '../sales.service';
 })
 export class PackagesComponent {
   packages:any = []
+  showmore:any = 0;
 
   constructor(private packageApi:SalesService, public rout:Router){}
   

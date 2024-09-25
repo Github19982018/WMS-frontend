@@ -8,18 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./shipment.component.css']
 })
 export class ShipmentComponent {
-  purchases:any = []
+  ships:any = []
   id:any;
+  showmore:any;
 
   constructor(private salesApi:SalesService, public rout:Router){}
   
-  
-  ngOnInit():void{
-  this.salesApi.getships().subscribe(
+  getAll(){
+    this.salesApi.getships().subscribe(
     (res:any) => {
-      this.purchases = JSON.parse(res)
+      this.ships = JSON.parse(res)
     }
   )
+  }
+
+  ngOnInit():void{
+  this.getAll()
 }
 
   decline(id:number){
@@ -29,21 +33,21 @@ export class ShipmentComponent {
   carrier(id:number){
       this.salesApi.carrier(id).subscribe(
         (res:any) => {
-          return 'success'
+          this.getAll()
         }
       )
   }
   customer(id:number){
       this.salesApi.customer(id).subscribe(
         (res:any) => {
-          return 'success'
+          this.getAll()
         }
       )
   }
   pay(id:number){
       this.salesApi.pay(id).subscribe(
         (res:any) => {
-          return 'success'
+          this.getAll()
         }
       )
   }

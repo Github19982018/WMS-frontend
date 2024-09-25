@@ -11,15 +11,19 @@ import { Router } from '@angular/router';
 export class PurchaseComponent {
   purchases:any = []
   id:any;
+  showmore:any;
   constructor(private purchaseApi:PurchaseService, public route:Router){}
   
-  
-  ngOnInit():void{
+  getAll(){
     this.purchaseApi.getAll().subscribe(
     (res:any) => {
       this.purchases = JSON.parse(res)
     }
   )
+  }
+  
+  ngOnInit():void{
+    this.getAll()
 }
 
 
@@ -27,7 +31,7 @@ export class PurchaseComponent {
     console.log('approve')
     this.purchaseApi.approve(Number(this.id)).subscribe(
       (res:any) => {
-        return 'success'
+        this.getAll()
       }
     )
   }
@@ -35,7 +39,7 @@ export class PurchaseComponent {
   decline(id:number){
     this.purchaseApi.decline(Number(this.id)).subscribe(
       (res:any) => {
-        return 'success'
+        this.getAll()
       }
     )
   }
