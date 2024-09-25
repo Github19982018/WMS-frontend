@@ -1,3 +1,4 @@
+<h1>Shipment</h1>
 <div *ngFor="let i of ships; ">
     <div >{{i.ref}} {{i.status}}
         <div [ngSwitch]="i.status_id">
@@ -11,9 +12,9 @@
         </div>
         <button ngSwitchCase="1" (click)="carrier(i.ref)">Picked up by the carrier</button>
         <button (click)="decline(i.ref)">Decline</button>
-        <button ngSwitchCase="2" (click)="customer(i.ref)">Received by the customer</button>
-        <button ngSwitchCase="3" (click)="pay(i.ref)">Payed by the customer</button>
-        <button ngSwitchCase="4" disabled>Payed</button>
+        <button *ngSwitchCase="2" (click)="customer(i.ref)">Received by the customer</button>
+        <button *ngSwitchCase="3" (click)="pay(i.ref)">Payed by the customer</button>
+        <button *ngSwitchCase="4" disabled>Payed</button>
         <button *ngIf="showmore!=i.ref" (click)="showmore = i.ref;">see details...</button>
         <button *ngIf="showmore==i.ref" (click)="showmore = 0;">see less details...</button>
         </div>

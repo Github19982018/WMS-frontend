@@ -19,11 +19,11 @@ export class SalesService {
   }
 
   approvePackage(id:number){
-    return this.http.post(`${baseurl}/sales/packages/front/approve`,{ref:id})
+    return this.http.post(`${baseurl}/sales/packages/front/approve/`,{ref:id})
   }
 
   declinePackage(id:number){
-    return this.http.post(`${baseurl}/sales/packages/front/decline`,{ref:id})
+    return this.http.post(`${baseurl}/sales/packages/front/decline/`,{ref:id})
   }
   public getships(){
     return this.http.get<any>(baseurl+'/sales/ships/')

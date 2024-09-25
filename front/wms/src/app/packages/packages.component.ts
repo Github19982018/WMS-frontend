@@ -13,24 +13,26 @@ export class PackagesComponent {
 
   constructor(private packageApi:SalesService, public rout:Router){}
   
-  
-  ngOnInit():void{
-  this.packageApi.getPackages().subscribe(
+  getAll(){
+    this.packageApi.getPackages().subscribe(
     (res:any) => {
       this.packages = JSON.parse(res)
-      console.log(res)
     }
   )
+  }
+  
+  ngOnInit():void{
+  this.getAll()
 }
 
-  decline(id:number){
+  decline(id:any){
       
   }
 
-  approve(id:number){
-      this.packageApi.approvePackage(id).subscribe(
+  approve(id:any){
+      this.packageApi.approvePackage(Number(id)).subscribe(
         (res:any) => {
-          return 'success'
+          this.getAll()
         }
       )
   }
