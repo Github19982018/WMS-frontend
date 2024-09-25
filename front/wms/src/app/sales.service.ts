@@ -34,15 +34,15 @@ export class SalesService {
   }
 
   carrier(id:number){
-    return this.http.post(`${baseurl}/sales/ships/front/carrier`,{ref:id,status:3,status_val:'Picked up by the carrier'})
+    return this.http.post(`${baseurl}/sales/ships/front/`,{ref:id,status:3,status_val:'Picked up by the carrier'})
   }
 
   customer(id:number){
-    return this.http.post(`${baseurl}/sales/ships/front/customer`,{ref:id,status:4,status_val:'Recieved by the customer'})
+    return this.http.post(`${baseurl}/sales/ships/front/`,{ref:id,status:4,status_val:'Recieved by the customer'})
   }
 
   pay(id:number){
-    return this.http.post(`${baseurl}/sales/ships/front/customer/pay`,{ref:id,status:5,status_val:'Payed by the customer'})
+    return this.http.post(`${baseurl}/sales/ships/front/`,{ref:id,status:5,status_val:'Payed by the customer'})
   }
 
   declineShip(id:number){
