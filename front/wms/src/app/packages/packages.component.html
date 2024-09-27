@@ -1,17 +1,34 @@
 <h1>Packages</h1>
-<div *ngFor="let i of packages; ">
-    <div>Order: {{i.ref}} Status: {{i.status}}
-        <div *ngIf="showmore == i.ref;">
-            <h2>status: {{i.status}}</h2>
-            <h3>order : #{{i.ref}}</h3>
-            <h2>Items:</h2>
-            <pre>{{i.items | pretty}}</pre>
-            <h2>Package:</h2>
-            <pre>{{i.package | pretty}}</pre>
+    <div class="card-container" *ngFor="let i of packages; ">
+    
+            <div class="container">
+            <h2>Order: {{i.ref}} Status: {{i.status}}</h2>
+            <div [ngSwitch]="i.status_id">
+                <div *ngIf="showmore == i.ref;">
+                    <h2>Items:</h2>
+                    <pre>{{i.items | pretty}}</pre>
+                    <h2>Package:</h2>
+                    <pre>{{i.package | pretty}}</pre>
+                </div>
+            <div class=" card-container">
+                <button *ngIf="i.status != 'cancelled' && i.status != 'approved'" (click)="approve(i.ref)" class="card card-small"  tabindex="0">
+                    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    <span>Approve</span>
+                </button>
+                <button class="card card-small"  tabindex="0">
+                    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    <span>Decline</span>
+                </button>
+                <button *ngIf="showmore==i.ref" (click)="showmore = 0;" class="card card-small"  tabindex="0">
+                    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    <span class="btn" >see less details...</span>
+                </button>
+                <button *ngIf="showmore!=i.ref" (click)="showmore = i.ref;" class="card card-small"  tabindex="0">
+                    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    <span class="btn" >see details...</span>
+                </button>
+            </div>
         </div>
-        <button *ngIf="i.status != 'cancelled' or i.status != 'approved' " (click)="approve(i.ref)">Approve</button>
-        <button (click)="decline(i.ref)">Decline</button>
-        <button *ngIf="showmore!=i.ref" (click)="showmore = i.ref;">see details...</button>
-        <button *ngIf="showmore==i.ref" (click)="showmore = 0;">see less details...</button>
+        </div>
     </div>
-    </div>
+    

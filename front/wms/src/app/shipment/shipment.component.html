@@ -1,24 +1,39 @@
 <h1>Shipment</h1>
-<div *ngFor="let i of ships; ">
-    <div >Order: {{i.ref}} Status: {{i.status}}
-        <div [ngSwitch]="i.status">
-            <div *ngIf="showmore == i.ref;">
-            <h2>status: {{i.status}}</h2>
-            <h3>order : #{{i.ref}}</h3>
-            <h2>Items:</h2>
-            <pre>{{i.items | pretty}}</pre>
-            <h2>Shipment:</h2>
-            <pre>{{i.shipment | pretty}}</pre>
-            <h2>Packages</h2>
-            <pre>{{i.packages | pretty}}</pre>
-        </div>
-        <button *ngSwitchCase="'pending'" (click)="carrier(i.ref)">Picked up by the carrier</button>
-        <button (click)="decline(i.ref)">Decline</button>
-        <button *ngSwitchCase="'Picked up by the carrier'" (click)="customer(i.ref)">Received by the customer</button>
-        <button *ngSwitchCase="'Received by the customer'" (click)="pay(i.ref)">Payed by the customer</button>
-        <button *ngSwitchCase="'cancelled'" disabled>Cancelled</button>
-        <button *ngSwitchCase="'Payed by the customer'" disabled>Payed</button>
-        <button *ngIf="showmore!=i.ref" (click)="showmore = i.ref;">see details...</button>
-        <button *ngIf="showmore==i.ref" (click)="showmore = 0;">see less details...</button>
+
+    <div class="card-container" *ngFor="let i of ships; ">
+
+        <div class="container">
+            <h2>Order: {{i.ref}} Status: {{i.status}}</h2>
+                <div [ngSwitch]="i.status">
+                    <div *ngIf="showmore==i.ref">
+                        <h2>Items:</h2>
+                        <pre>{{i.items | pretty}}</pre>
+                        <h2>Shipment:</h2>
+                        <pre>{{i.shipment | pretty}}</pre>
+                        <h2>Packages</h2>
+                        <pre>{{i.packages | pretty}}</pre>
+                    </div>
+                    <div class=" card-container">
+                        <button class="card card-small"  tabindex="0" (click)="decline(i.ref)"><svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                            <span>Decline</span></button>
+                        <button *ngSwitchCase="'pending'" (click)="carrier(i.ref)"><svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                                <span>Picked up by the carrier</span></button>
+                        <button class="card card-small"  tabindex="0" *ngSwitchCase="'Picked up by the carrier'" (click)="customer(i.ref)"><svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                            <span>Received by the customer</span></button>
+                        <button class="card card-small"  tabindex="0" *ngSwitchCase="'Received by the customer'" (click)="pay(i.ref)">
+                            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                            <span>Payed by the customer</span> </button>
+                        <button class="card card-small"  tabindex="0" *ngSwitchCase="'cancelled'" disabled><span> Cancelled</span></button>
+                        <button class="card card-small"  tabindex="0" *ngSwitchCase="'Payed by the customer'" disabled><span>Payed</span></button>
+                        <button *ngIf="showmore==i.ref" (click)="showmore = 0;" class="card card-small"  tabindex="0">
+                            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                            <span class="btn" >see less details...</span>
+                        </button>
+                        <button *ngIf="showmore!=i.ref" (click)="showmore = i.ref;" class="card card-small"  tabindex="0">
+                            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                            <span class="btn" >see details...</span>
+                        </button>
+                    </div>
+                </div>
         </div>
     </div>
