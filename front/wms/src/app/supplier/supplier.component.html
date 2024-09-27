@@ -12,18 +12,18 @@
         </div>
         <div [ngSwitch]="i.status">
                 <div class=" card-container">
-                    <button class="card card-small"  tabindex="0" (click)="decline(i.ref)"><svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                        <span>Decline</span></button>
+                    <!-- <button class="card card-small"  tabindex="0" (click)="decline(i.ref)"><svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                        <span>Decline</span></button> -->
                     <button *ngSwitchCase="'pending'" (click)="approve(i.ref)"><svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                            <span>Picked up by the carrier</span></button>
+                            <span>Approve</span></button>
                     <button *ngSwitchCase="'approved'" (click)="process(i.ref)" class="card card-small"  tabindex="0" ><svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                        <span>Received by the customer</span></button>
+                        <span>Order Processed</span></button>
                     <button *ngSwitchCase="'order processed'" (click)="readyShip(i.ref)" class="card card-small"  tabindex="0" >
                         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                        <span>Payed by the customer</span> </button>
+                        <span>Ready for shipping</span> </button>
                     <button *ngSwitchCase="'ready for shipping'" (click)="dispatch(i.ref)" class="card card-small"  tabindex="0" >
                         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                        <span>Payed by the customer</span> </button>
+                        <span>Dispatched</span> </button>
                     <button *ngSwitchCase="'dispatched'" disabled  class="card card-small"  tabindex="0"  >
                         <span>Dispatched</span> </button>
                     <button class="card card-small"  tabindex="0" *ngSwitchCase="'cancelled'" disabled><span> Cancelled</span></button>
