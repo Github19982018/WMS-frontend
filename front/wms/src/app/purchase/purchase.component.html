@@ -8,9 +8,9 @@
                 <h2>status: {{i.status}}</h2>
                 <h3>order : #{{i.ref}}</h3>
                 <h2>Items:</h2>
-                <p>{{i.items | pretty}}</p>
+                <pre>{{i.items | pretty}}</pre>
                 <h2>Purchase order:</h2>
-                <p>{{i.purchase | pretty}}</p>
+                <pre>{{i.purchase | pretty}}</pre>
             </div>
     
         <button (click)="approve(i.ref)">Approve</button>

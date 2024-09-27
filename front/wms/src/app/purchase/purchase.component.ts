@@ -27,17 +27,17 @@ export class PurchaseComponent {
 }
 
 
-  approve(id:number){
+  approve(ref:number){
     console.log('approve')
-    this.purchaseApi.approve(Number(this.id)).subscribe(
+    this.purchaseApi.approve(Number(ref)).subscribe(
       (res:any) => {
         this.getAll()
       }
     )
   }
   
-  decline(id:number){
-    this.purchaseApi.decline(Number(this.id)).subscribe(
+  decline(ref:number){
+    this.purchaseApi.decline(Number(ref)).subscribe(
       (res:any) => {
         this.getAll()
       }
