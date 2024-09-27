@@ -9,7 +9,7 @@
             <h2>Package:</h2>
             <pre>{{i.package | pretty}}</pre>
         </div>
-        <button (click)="approve(i.ref)">Approve</button>
+        <button *ngIf="i.status != 'cancelled' or i.status != 'approved' " (click)="approve(i.ref)">Approve</button>
         <button (click)="decline(i.ref)">Decline</button>
         <button *ngIf="showmore!=i.ref" (click)="showmore = i.ref;">see details...</button>
         <button *ngIf="showmore==i.ref" (click)="showmore = 0;">see less details...</button>

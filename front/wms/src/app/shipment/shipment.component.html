@@ -16,6 +16,7 @@
         <button (click)="decline(i.ref)">Decline</button>
         <button *ngSwitchCase="'Picked up by the carrier'" (click)="customer(i.ref)">Received by the customer</button>
         <button *ngSwitchCase="'Received by the customer'" (click)="pay(i.ref)">Payed by the customer</button>
+        <button *ngSwitchCase="'cancelled'" disabled>Cancelled</button>
         <button *ngSwitchCase="'Payed by the customer'" disabled>Payed</button>
         <button *ngIf="showmore!=i.ref" (click)="showmore = i.ref;">see details...</button>
         <button *ngIf="showmore==i.ref" (click)="showmore = 0;">see less details...</button>

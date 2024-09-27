@@ -16,6 +16,7 @@
             <button *ngSwitchCase="'order processed'" (click)="readyShip(i.ref)">Ready for shipping</button>
             <button *ngSwitchCase="'ready for shipping'" (click)="dispatch(i.ref)">Dispatched</button>
             <button *ngSwitchCase="'dispatched'" disabled>Dispatched</button>
+            <button *ngSwitchCase="'cancelled'" disabled>Cancelled</button>
             <button *ngIf="showmore!=i.ref" (click)="showmore = i.ref;">see details...</button>
             <button *ngIf="showmore==i.ref" (click)="showmore = 0;">see less details...</button>
         </div>
