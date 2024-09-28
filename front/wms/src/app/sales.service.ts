@@ -42,7 +42,7 @@ export class SalesService {
   }
 
   pay(id:number){
-    return this.http.post(`${baseurl}/sales/ships/front/`,{ref:id,status:5,status_val:'Payed by the customer'})
+    return this.http.post(`${baseurl}/sales/pay/`,{ref:id,status:5,status_val:'Payed by the customer'})
   }
 
   declineShip(id:number){
