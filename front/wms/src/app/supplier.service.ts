@@ -37,6 +37,18 @@ export class SupplierService {
     return this.http.post(`${baseurl}/supplier/front/approve/`,{ref:id,status:6,status_val:'dispatched'})
   }
 
+  transit(id:number){
+    return this.http.post(`${baseurl}/supplier/front/approve/`,{ref:id,status:7,status_val:'in transit'})
+  }
+
+  deliver(id:number){
+    return this.http.post(`${baseurl}/supplier/front/approve/`,{ref:id,status:8,status_val:'delivered'})
+  }
+
+  pay(id:number){
+    return this.http.post(`${baseurl}/supplier/front/approve/`,{ref:id,status:9,status_val:'payed'})
+  }
+
   decline(id:number){
     return this.http.post(`${baseurl}/supplier/front/decline/`,{ref:id})
   }

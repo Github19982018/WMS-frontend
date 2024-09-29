@@ -62,6 +62,30 @@ export class SupplierComponent {
         }
       )
   }
+  transit(id:any){
+      this.purchaseApi.transit(Number(id)).subscribe(
+        (res:any) => {
+          this.getAll()
+
+        }
+      )
+  }
+  deliver(id:any){
+      this.purchaseApi.deliver(Number(id)).subscribe(
+        (res:any) => {
+          this.getAll()
+
+        }
+      )
+  }
+  pay(id:any){
+      this.purchaseApi.pay(Number(id)).subscribe(
+        (res:any) => {
+          this.getAll()
+
+        }
+      )
+  }
 
 
 }
