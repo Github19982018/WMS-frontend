@@ -18,8 +18,12 @@ export class SalesService {
     return this.http.get(`${baseurl}/sales/packages/${id}`)
   }
 
-  approvePackage(id:number){
-    return this.http.post(`${baseurl}/sales/packages/front/approve/`,{ref:id})
+  packed(id:number){
+    return this.http.post(`${baseurl}/sales/packages/front/approve/`,{ref:id,status:2,status_val:'Packed'})
+  }
+
+  shipready(id:number){
+    return this.http.post(`${baseurl}/sales/packages/front/approve/`,{ref:id,status:3,status_val:'Ready to ship'})
   }
 
   declinePackage(id:number){
@@ -31,6 +35,10 @@ export class SalesService {
 
   getship(id:number){
     return this.http.get(`${baseurl}/sales/ships/${id}`)
+  }
+
+  sentCarrier(id:number){
+    return this.http.post(`${baseurl}/sales/ships/front/`,{ref:id,status:2,status_val:'Sent to carrier'})
   }
 
   carrier(id:number){

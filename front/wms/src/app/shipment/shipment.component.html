@@ -16,7 +16,10 @@
                     <div class=" card-container">
                         <!-- <button class="card card-small"  tabindex="0" (click)="decline(i.ref)"><svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
                             <span>Decline</span></button> -->
-                        <button *ngSwitchCase="'pending'" tabindex="0" class="card card-small" (click)="carrier(i.ref)">
+                        <button *ngSwitchCase="'pending'" tabindex="0" class="card card-small" (click)="sentCarrier(i.ref)">
+                            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                                <span>Sent to carrier</span></button>
+                        <button *ngSwitchCase="'Sent to carrier'" tabindex="0" class="card card-small" (click)="carrier(i.ref)">
                             <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
                                 <span>Picked up by the carrier</span></button>
                         <button class="card card-small"  tabindex="0" *ngSwitchCase="'Picked up by the carrier'" (click)="customer(i.ref)"><svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>

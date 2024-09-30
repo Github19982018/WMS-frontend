@@ -29,8 +29,16 @@ export class PackagesComponent {
       
   }
 
-  approve(id:any){
-      this.packageApi.approvePackage(Number(id)).subscribe(
+  packed(id:any){
+      this.packageApi.packed(Number(id)).subscribe(
+        (res:any) => {
+          this.getAll()
+        }
+      )
+  }
+
+  shipready(id:any){
+      this.packageApi.shipready(Number(id)).subscribe(
         (res:any) => {
           this.getAll()
         }

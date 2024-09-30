@@ -30,6 +30,13 @@ export class ShipmentComponent {
       
   }
 
+  sentCarrier(id:number){
+      this.salesApi.sentCarrier(id).subscribe(
+        (res:any) => {
+          this.getAll()
+        }
+      )
+  }
   carrier(id:number){
       this.salesApi.carrier(id).subscribe(
         (res:any) => {
