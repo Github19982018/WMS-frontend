@@ -13,6 +13,7 @@ import { PackagesComponent } from './packages/packages.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import { ShipmentComponent } from './shipment/shipment.component';
 import { PrettyPipe } from './pretty.pipe';
+import { SalesComponent } from './sales/sales.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PrettyPipe } from './pretty.pipe';
     SupplierComponent,
     ShipmentComponent,
     PrettyPipe,
+    SalesComponent,
   ],
   imports: [
     BrowserModule,
