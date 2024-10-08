@@ -3,7 +3,8 @@
 
     <div class="container">
         <h2>Order: {{i.ref}} Status: {{i.status}}</h2>
-        <div [ngSwitch]="i.status_id">
+            <h3>Warehouse:{{i.warehouse}}</h3>
+            <div [ngSwitch]="i.status_id">
             <div *ngIf="showmore == i.ref;">
                 <h2>Items:</h2>
                 <pre>{{i.items | pretty}}</pre>
@@ -11,7 +12,7 @@
                 <pre>{{i.purchase | pretty}}</pre>
             </div>
             <div class=" card-container">
-                <button *ngIf="i.status != 'cancelled' && i.status != 'approved'" (click)="approve(i.ref)" class="card card-small"  tabindex="0">
+                <button *ngIf="i.status != 'cancelled' && i.status != 'approved'" (click)="approve(i.ref,i.warehouse)" class="card card-small"  tabindex="0">
                     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
                     <span>Approve</span>
                 </button>

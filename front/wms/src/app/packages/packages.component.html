@@ -1,8 +1,8 @@
 <h1>Packages</h1>
     <div class="card-container" *ngFor="let i of packages; ">
-    
             <div class="container">
             <h2>Order: {{i.ref}} Status: {{i.status}}</h2>
+            <h3>Warehouse:{{i.warehouse}}</h3>
             <div [ngSwitch]="i.status">
                 <div *ngIf="showmore == i.ref;">
                     <h2>Items:</h2>
@@ -11,10 +11,10 @@
                     <pre>{{i.package | pretty}}</pre>
                 </div>
             <div class=" card-container">
-                <button *ngSwitchCase="'pending'" tabindex="0" class="card card-small" (click)="packed(i.ref)">
+                <button *ngSwitchCase="'pending'" tabindex="0" class="card card-small" (click)="packed(i.ref,i.warehouse)">
                     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
                         <span>Packed</span></button>
-                <button *ngSwitchCase="'Packed'" tabindex="0" class="card card-small" (click)="shipready(i.ref)">
+                <button *ngSwitchCase="'Packed'" tabindex="0" class="card card-small" (click)="shipready(i.ref,i.warehouse)">
                     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
                         <span>Ready to ship</span></button>
                 <!-- <button class="card card-small"  tabindex="0">

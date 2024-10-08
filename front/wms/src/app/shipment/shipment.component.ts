@@ -11,11 +11,12 @@ export class ShipmentComponent {
   ships:any = []
   id:any;
   showmore:any;
+  warehouse:number=1;
 
   constructor(private salesApi:SalesService, public rout:Router){}
   
   getAll(){
-    this.salesApi.getships().subscribe(
+    this.salesApi.getships(this.warehouse).subscribe(
     (res:any) => {
       this.ships = JSON.parse(res)
     }
@@ -30,29 +31,29 @@ export class ShipmentComponent {
       
   }
 
-  sentCarrier(id:number){
-      this.salesApi.sentCarrier(id).subscribe(
+  sentCarrier(id:number,warehouse:number){
+      this.salesApi.sentCarrier(Number(id),Number(warehouse)).subscribe(
         (res:any) => {
           this.getAll()
         }
       )
   }
-  carrier(id:number){
-      this.salesApi.carrier(id).subscribe(
+  carrier(id:number,warehouse:number){
+      this.salesApi.carrier(Number(id),Number(warehouse)).subscribe(
         (res:any) => {
           this.getAll()
         }
       )
   }
-  customer(id:number){
-      this.salesApi.customer(id).subscribe(
+  customer(id:number,warehouse:number){
+      this.salesApi.customer(Number(id),Number(warehouse)).subscribe(
         (res:any) => {
           this.getAll()
         }
       )
   }
-  pay(id:number){
-      this.salesApi.pay(id).subscribe(
+  pay(id:number,warehouse:number){
+      this.salesApi.pay(Number(id),Number(warehouse)).subscribe(
         (res:any) => {
           this.getAll()
         }

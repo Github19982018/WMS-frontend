@@ -10,51 +10,51 @@ export class SalesService {
 
   constructor(private http:HttpClient) { }
 
-  public getPackages(){
-    return this.http.get<any>(baseurl+'/sales/packages/')
+  public getPackages(warehouse:number){
+    return this.http.get<any>(`${baseurl}/${warehouse}/sales/packages/`)
   }
 
-  getPackage(id:number){
-    return this.http.get(`${baseurl}/sales/packages/${id}`)
+  getPackage(id:number,warehouse:number){
+    return this.http.get(`${baseurl}/${warehouse}/sales/packages/${id}`)
   }
 
-  packed(id:number){
-    return this.http.post(`${baseurl}/sales/packages/front/approve/`,{ref:id,status:2,status_val:'Packed'})
+  packed(id:number,warehouse:number){
+    return this.http.post(`${baseurl}/${warehouse}/sales/packages/front/approve/`,{ref:id,status:2,status_val:'Packed'})
   }
 
-  shipready(id:number){
-    return this.http.post(`${baseurl}/sales/packages/front/approve/`,{ref:id,status:3,status_val:'Ready to ship'})
+  shipready(id:number,warehouse:number){
+    return this.http.post(`${baseurl}/${warehouse}/sales/packages/front/approve/`,{ref:id,status:3,status_val:'Ready to ship'})
   }
 
-  declinePackage(id:number){
-    return this.http.post(`${baseurl}/sales/packages/front/decline/`,{ref:id})
+  declinePackage(id:number,warehouse:number){
+    return this.http.post(`${baseurl}/${warehouse}/sales/packages/front/decline/`,{ref:id})
   }
-  public getships(){
-    return this.http.get<any>(baseurl+'/sales/ships/')
-  }
-
-  getship(id:number){
-    return this.http.get(`${baseurl}/sales/ships/${id}`)
+  public getships(warehouse:number){
+    return this.http.get<any>(`${baseurl}/${warehouse}/sales/ships/`)
   }
 
-  sentCarrier(id:number){
-    return this.http.post(`${baseurl}/sales/ships/front/`,{ref:id,status:2,status_val:'Sent to carrier'})
+  getship(id:number,warehouse:number){
+    return this.http.get(`${baseurl}/${warehouse}/sales/ships/${id}`)
   }
 
-  carrier(id:number){
-    return this.http.post(`${baseurl}/sales/ships/front/`,{ref:id,status:3,status_val:'Picked up by the carrier'})
+  sentCarrier(id:number,warehouse:number){
+    return this.http.post(`${baseurl}/${warehouse}/sales/ships/front/`,{ref:id,status:2,status_val:'Sent to carrier'})
   }
 
-  customer(id:number){
-    return this.http.post(`${baseurl}/sales/ships/front/`,{ref:id,status:4,status_val:'Recieved by the customer'})
+  carrier(id:number,warehouse:number){
+    return this.http.post(`${baseurl}/${warehouse}/sales/ships/front/`,{ref:id,status:3,status_val:'Picked up by the carrier'})
   }
 
-  pay(id:number){
-    return this.http.post(`${baseurl}/sales/pay/`,{ref:id,status:5,status_val:'Payed by the customer'})
+  customer(id:number,warehouse:number){
+    return this.http.post(`${baseurl}/${warehouse}/sales/ships/front/`,{ref:id,status:4,status_val:'Recieved by the customer'})
   }
 
-  declineShip(id:number){
-    return this.http.post(`${baseurl}/sales/ships/front/decline`,{ref:id})
+  pay(id:number,warehouse:number){
+    return this.http.post(`${baseurl}/${warehouse}/sales/pay/`,{ref:id,status:5,status_val:'Payed by the customer'})
+  }
+
+  declineShip(id:number,warehouse:number){
+    return this.http.post(`${baseurl}/${warehouse}/sales/ships/front/decline`,{ref:id})
   }
 
 }

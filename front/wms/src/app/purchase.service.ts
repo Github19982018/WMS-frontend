@@ -10,24 +10,24 @@ export class PurchaseService {
 
   constructor(private http:HttpClient) { }
 
-  public getAll(){
-    return this.http.get<any>(baseurl+'/purchases')
+  public getAll(warehouse:number){
+    return this.http.get<any>(`${baseurl}/${warehouse}/purchases`)
   }
 
-  get(id:number){
-    return this.http.get(`${baseurl}/purchases/${id}`)
+  get(id:number,warehouse:number){
+    return this.http.get(`${baseurl}/${warehouse}/purchases/${id}`)
   }
 
-  getByName(name:string){
-    return this.http.get(`${baseurl}/purchases/${name}`)
+  getByName(name:string,warehouse:number){
+    return this.http.get(`${baseurl}/${warehouse}/purchases/${name}`)
   }
 
-  approve(id:number){
-    return this.http.post(`${baseurl}/purchases/front/approve/`,{ref:id})
+  approve(id:number,warehouse:number){
+    return this.http.post(`${baseurl}/${warehouse}/purchases/front/approve/`,{ref:id})
   }
 
-  decline(id:number){
-    return this.http.post(`${baseurl}/purchases/front/decline/`,{ref:id})
+  decline(id:number,warehouse:number){
+    return this.http.post(`${baseurl}/${warehouse}/purchases/front/decline/`,{ref:id})
   }
 
 }

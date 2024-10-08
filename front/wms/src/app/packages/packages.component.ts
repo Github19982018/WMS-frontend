@@ -10,11 +10,12 @@ import { SalesService } from '../sales.service';
 export class PackagesComponent {
   packages:any = []
   showmore:any = 0;
+  warehouse:number = 0;
 
   constructor(private packageApi:SalesService, public rout:Router){}
   
   getAll(){
-    this.packageApi.getPackages().subscribe(
+    this.packageApi.getPackages(this.warehouse).subscribe(
     (res:any) => {
       this.packages = JSON.parse(res)
     }
@@ -29,16 +30,16 @@ export class PackagesComponent {
       
   }
 
-  packed(id:any){
-      this.packageApi.packed(Number(id)).subscribe(
+  packed(id:string,warehouse:string){
+      this.packageApi.packed(Number(id),Number(warehouse)).subscribe(
         (res:any) => {
           this.getAll()
         }
       )
   }
 
-  shipready(id:any){
-      this.packageApi.shipready(Number(id)).subscribe(
+  shipready(id:string,warehouse:string){
+      this.packageApi.shipready(Number(id),Number(warehouse)).subscribe(
         (res:any) => {
           this.getAll()
         }

@@ -12,10 +12,12 @@ export class PurchaseComponent {
   purchases:any = []
   id:any;
   showmore:any;
+  warehouse:number=1;
+
   constructor(private purchaseApi:PurchaseService, public route:Router){}
   
   getAll(){
-    this.purchaseApi.getAll().subscribe(
+    this.purchaseApi.getAll(this.warehouse).subscribe(
     (res:any) => {
       this.purchases = JSON.parse(res)
     }
@@ -27,17 +29,17 @@ export class PurchaseComponent {
 }
 
 
-  approve(ref:number){
+  approve(ref:number,warehouse:number){
     console.log('approve')
-    this.purchaseApi.approve(Number(ref)).subscribe(
+    this.purchaseApi.approve(Number(ref),Number(warehouse)).subscribe(
       (res:any) => {
         this.getAll()
       }
     )
   }
   
-  decline(ref:number){
-    this.purchaseApi.decline(Number(ref)).subscribe(
+  decline(ref:number,warehouse:number){
+    this.purchaseApi.decline(Number(ref),Number(warehouse)).subscribe(
       (res:any) => {
         this.getAll()
       }
